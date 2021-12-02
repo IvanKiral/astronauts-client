@@ -16,6 +16,7 @@ export const Editor: React.FC<EditorProps> = ({astronauts}) => {
                 <th>Surname</th>
                 <th>Birthday</th>
                 <th>Ability</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>

@@ -1,11 +1,13 @@
 import React from "react";
 import {IAstronaut} from "../app/types/astronaut.type";
+import {Button} from "react-bootstrap";
 
 interface IEditorItemInterface{
     astronaut: IAstronaut
+    onDelete: () => void;
 }
 
-export const EditorItem: React.FC<IEditorItemInterface> = ({astronaut}) => {
+export const EditorItem: React.FC<IEditorItemInterface> = ({astronaut, onDelete}) => {
     const {
         name,
         surname,
@@ -14,9 +16,10 @@ export const EditorItem: React.FC<IEditorItemInterface> = ({astronaut}) => {
     } = astronaut
 
     return (<tr>
-        <td>{name}</td>
-        <td>{surname}</td>
-        <td>{birthday}</td>
-        <td>{ability}</td>
+        <td className="align-middle">{name}</td>
+        <td className="align-middle">{surname}</td>
+        <td className="align-middle">{birthday}</td>
+        <td className="align-middle">{ability}</td>
+        <td><Button variant="danger" onClick={onDelete}>Delete</Button></td>
     </tr>)
 }
