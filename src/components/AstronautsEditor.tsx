@@ -1,8 +1,13 @@
 import React from 'react'
 import Table from 'react-bootstrap/Table'
-import {EditorItem} from "./EditorItem";
+import {IAstronautsMap} from "../app/types/IAstronautsMap.type";
+import {EditorItem} from "../containers/EditorItem";
 
-export const Editor: React.FC = () => {
+interface EditorProps {
+    astronauts: IAstronautsMap
+}
+
+export const Editor: React.FC<EditorProps> = ({astronauts}) => {
 
     return (<Table striped bordered hover>
         <thead>
@@ -14,7 +19,7 @@ export const Editor: React.FC = () => {
             </tr>
         </thead>
         <tbody>
-            <EditorItem/>
+        {Array.from(astronauts.keys()).map((item) => <EditorItem id={item}/>)}
         </tbody>
     </Table>)
 }

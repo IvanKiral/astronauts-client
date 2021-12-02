@@ -1,11 +1,22 @@
 import React from "react";
+import {IAstronaut} from "../app/types/astronaut.type";
 
+interface IEditorItemInterface{
+    astronaut: IAstronaut
+}
 
-export const EditorItem: React.FC = () => {
+export const EditorItem: React.FC<IEditorItemInterface> = ({astronaut}) => {
+    const {
+        name,
+        surname,
+        birthday,
+        ability
+    } = astronaut
+
     return (<tr>
-        <td>Ivan</td>
-        <td>Kiral</td>
-        <td>23.11.1998</td>
-        <td>talent na vsetko</td>
+        <td>{name}</td>
+        <td>{surname}</td>
+        <td>{birthday}</td>
+        <td>{ability}</td>
     </tr>)
 }
