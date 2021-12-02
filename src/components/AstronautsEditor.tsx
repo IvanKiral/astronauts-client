@@ -1,5 +1,6 @@
 import React from 'react'
 import Table from 'react-bootstrap/Table'
+import {EditorItem} from "./EditorItem";
 
 export const Editor: React.FC = () => {
 
@@ -12,5 +13,8 @@ export const Editor: React.FC = () => {
                 <th>Ability</th>
             </tr>
         </thead>
+        <tbody>
+            <EditorItem/>
+        </tbody>
     </Table>)
 }
