@@ -1,12 +1,11 @@
-import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
+import {ThunkAction, Action, compose, createStore, applyMiddleware} from '@reduxjs/toolkit';
 import { rootReducer } from './rootReducer';
 
-export const store = configureStore({
-  reducer: {
-    counter: rootReducer,
-  },
-});
+
+const composeEnhancers = (window as any)['__REDUX_DEVTOOLS_EXTENSION_COMPOSE__'] as typeof compose || compose
+
+export const store = createStore(rootReducer, composeEnhancers(applyMiddleware()));
+
 
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;

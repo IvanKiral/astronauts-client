@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import {Editor} from "./components/AstronautsEditor";
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import {Editor} from "./containers/Editor";
 
 function App() {
   return (
