@@ -1,7 +1,7 @@
-import {astronautCreated, astronautDeleted} from "../actionTypes";
+import {astronautCreated, astronautDeleted, astronautUpdated} from "../actionTypes";
 import {IAstronaut} from "../../types/astronaut.type";
 
-export type AstronautAction = ReturnType<typeof AstronautCreatedAction | typeof AstronautDeletedAction >
+export type AstronautAction = ReturnType<typeof AstronautCreatedAction | typeof AstronautDeletedAction | typeof AstronautUpdatedAction >
 
 
 export const AstronautCreatedAction = (astronaut: IAstronaut) => ({
@@ -12,4 +12,10 @@ export const AstronautCreatedAction = (astronaut: IAstronaut) => ({
 export const AstronautDeletedAction = (id: string) => ({
     type: astronautDeleted,
     payload: { id },
+}) as const;
+
+
+export const AstronautUpdatedAction = (id: string, astronaut: IAstronaut) => ({
+    type: astronautUpdated,
+    payload: { id, astronaut },
 }) as const;
