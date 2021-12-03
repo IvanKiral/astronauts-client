@@ -12,11 +12,11 @@ export const Editor: React.FC<EditorProps> = ({astronauts}) => {
     return (<Table striped bordered hover>
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Surname</th>
-                <th>Birthday</th>
-                <th>Ability</th>
-                <th>Action</th>
+                <th style={{width: "22%"}}>Name</th>
+                <th style={{width: "22%"}}>Surname</th>
+                <th style={{width: "22%"}}>Birthday</th>
+                <th style={{width: "22%"}}>Ability</th>
+                <th style={{width: "12%"}}>Action</th>
             </tr>
         </thead>
         <tbody>

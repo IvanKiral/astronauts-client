@@ -1,27 +1,39 @@
 import React, {FormEvent, useState} from "react";
 import {Button, Form, FormControl, InputGroup, Modal} from "react-bootstrap";
+import {IAstronaut} from "../app/types/astronaut.type";
 
 interface IAddAstronautProps{
-    handleCreate: (name: string, surname: string, date: string, ability: string) => void
+    readonly buttonName?: string
+    readonly astronaut?: IAstronaut
+    readonly handleCreate: (name: string, surname: string, date: string, ability: string) => void
 }
 
-export const AddAstronaut: React.FC<IAddAstronautProps> = ({handleCreate}) => {
+export const AddAstronaut: React.FC<IAddAstronautProps> = ({buttonName, astronaut, handleCreate}) => {
     const [show, setShow] = useState(false);
-    const [name, setName] = useState("");
-    const [surname, setSurname] = useState("");
-    const [date, setDate] = useState("");
-    const [ability, setAbility] = useState("");
+    const [name, setName] = useState(astronaut?.name ?? "");
+    const [surname, setSurname] = useState(astronaut?.surname ??"");
+    const [date, setDate] = useState(astronaut?.birthday ?? "");
+    const [ability, setAbility] = useState(astronaut?.ability ?? "");
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const handleClose = () => {
+        setShow(false);
+    }
+    const handleShow = () =>  {
+        setName(astronaut?.name ?? "");
+        setSurname(astronaut?.surname ?? "");
+        setDate(astronaut?.birthday ?? "");
+        setAbility(astronaut?.ability ?? "");
+        setShow(true);
+    }
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         handleCreate(name, surname, date, ability);
+        handleClose();
         event.preventDefault()
     }
 
     return (<>
-        <Button variant="primary" onClick={handleShow}>Add astronaut</Button>
+        <Button variant="primary" onClick={handleShow}>{buttonName ?? "Add astronaut"}</Button>
 
         <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
@@ -33,6 +45,7 @@ export const AddAstronaut: React.FC<IAddAstronautProps> = ({handleCreate}) => {
 
                 <InputGroup className="mb-3">
                     <FormControl
+                        value={name}
                         required
                         placeholder="Name"
                         aria-label="Name"
@@ -42,6 +55,7 @@ export const AddAstronaut: React.FC<IAddAstronautProps> = ({handleCreate}) => {
 
                 <InputGroup className="mb-3">
                     <FormControl
+                        value={surname}
                         required
                         placeholder="Surname"
                         aria-label="Surname"
@@ -51,16 +65,16 @@ export const AddAstronaut: React.FC<IAddAstronautProps> = ({handleCreate}) => {
 
                 <InputGroup className="mb-3">
                     <FormControl
+                        value={date}
                         required
                         type="date"
-                        placeholder="Datetime"
-                        aria-label="Recipient's username"
                         onChange={(event) => setDate(event.target.value)}
                     />
                 </InputGroup>
 
                 <InputGroup className="mb-3">
                     <FormControl
+                        value={ability}
                         required
                         placeholder="Ability"
                         aria-label="Ability"
@@ -71,7 +85,7 @@ export const AddAstronaut: React.FC<IAddAstronautProps> = ({handleCreate}) => {
             </Modal.Body>
 
             <Modal.Footer>
-                <Button variant="secondary" onClick={handleClose}>
+                <Button type='reset' variant="secondary" onClick={handleClose}>
                     Close
                 </Button>
                 <Button type="submit" variant="primary" >

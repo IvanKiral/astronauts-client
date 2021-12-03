@@ -22,6 +22,7 @@ export const EditorItemContainer: React.FC<IEditorItemContainerProps> = ({id}) =
         <EditorItem
             astronaut={astronaut}
             onDelete={onDelete}
+            id={id}
         />
     )
 }
