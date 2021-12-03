@@ -1,7 +1,7 @@
-import {v4 as uuid} from 'uuid'
 import {IAstronautsMap} from "../types/IAstronautsMap.type";
 import {Action} from "../actions/Action";
 import {astronautCreated, astronautDeleted, astronautUpdated} from "../actions/actionTypes";
+import {AddAstronaut, DeleteAstronaut, UpdateAstronaut} from "../utils/MapUtils";
 
 
 const initialState: IAstronautsMap = new Map([
@@ -11,22 +11,13 @@ const initialState: IAstronautsMap = new Map([
 export const astronautReducer = (state: IAstronautsMap = initialState, action: Action): IAstronautsMap => {
     switch (action.type) {
         case astronautCreated:
-            const newMap = new Map(state);
-            newMap.set(uuid(), action.payload.astronaut);
-
-            return newMap;
-
-        case astronautDeleted:
-            const newMap1 = new Map(state);
-            newMap1.delete(action.payload.id);
-
-            return newMap1;
+            return AddAstronaut(state, action.payload.astronaut);
 
         case astronautUpdated:
-            const newMap2 = new Map(state)
-            newMap2.set(action.payload.id, action.payload.astronaut)
+            return UpdateAstronaut(state, action.payload.id, action.payload.astronaut);
 
-            return newMap2
+        case astronautDeleted:
+            return DeleteAstronaut(state, action.payload.id);
 
         default:
             return state;
