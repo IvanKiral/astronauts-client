@@ -2,13 +2,15 @@ import React from 'react'
 import Table from 'react-bootstrap/Table'
 import {EditorItem} from "../containers/EditorItem";
 import {IErrorState} from "../app/reducers/errorReducer";
+import {OrderByFunction, orderByMap} from "../app/reducers/astronautReducer";
 
 interface EditorProps {
-    astronauts: Array<string>
-    error: IErrorState
+    readonly astronauts: Array<string>;
+    readonly error: IErrorState;
+    readonly orderBy: (parameter: OrderByFunction) => void;
 }
 
-export const Editor: React.FC<EditorProps> = ({astronauts, error}) => {
+export const Editor: React.FC<EditorProps> = ({astronauts, error, orderBy}) => {
     const{
         isError,
         message
@@ -18,10 +20,10 @@ export const Editor: React.FC<EditorProps> = ({astronauts, error}) => {
         <Table striped bordered hover>
             <thead>
             <tr>
-                <th style={{width: "22%"}}>Name</th>
-                <th style={{width: "22%"}}>Surname</th>
-                <th style={{width: "22%"}}>Birthday</th>
-                <th style={{width: "22%"}}>Ability</th>
+                <th style={{width: "22%"}} onClick={() => orderBy(orderByMap.name)}>Name</th>
+                <th style={{width: "22%"}} onClick={() => orderBy(orderByMap.surname)}>Surname</th>
+                <th style={{width: "22%"}} onClick={() => orderBy(orderByMap.birthday)}>Birthday</th>
+                <th style={{width: "22%"}} onClick={() => orderBy(orderByMap.ability)}>Ability</th>
                 <th style={{width: "12%"}}>Action</th>
             </tr>
             </thead>
