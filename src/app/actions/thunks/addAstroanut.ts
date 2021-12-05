@@ -12,7 +12,7 @@ export const createAddAstronautAction = ({astronautRepository}: IDeps) =>
         async (dispatch: AppDispatch): Promise<void> => {
             try {
                 const newAstronaut = await astronautRepository.addAstronaut(astronaut);
-                dispatch(AstronautCreatedAction(newAstronaut));
+                dispatch(AstronautCreatedAction(newAstronaut.id, newAstronaut));
             }
             catch (e){}
         };
