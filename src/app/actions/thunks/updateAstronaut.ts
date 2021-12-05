@@ -3,6 +3,7 @@ import {AppDispatch} from "../../store";
 import {IAstronaut} from "../../types/astronaut.type";
 import {AstronautUpdatedAction} from "../creators/astronautActions";
 import {OperationIsInProgressAction, OperationIsNotInProgressAction} from "../creators/operationInProgressAction";
+import {errorOccurredAction} from "../creators/errorActions";
 
 interface IDeps{
     astronautRepository: IAstronautRepository;
@@ -16,7 +17,7 @@ export const createUpdateAstronautAction = ({astronautRepository} : IDeps) =>
                 const response = await astronautRepository.updateAstronaut(id, astronaut);
                 dispatch(AstronautUpdatedAction(id, response));
             } catch (e) {
-
+                dispatch(errorOccurredAction("Could not update astronaut. Please try again later."));
             } finally {
                 dispatch(OperationIsNotInProgressAction());
             }
