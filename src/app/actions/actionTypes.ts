@@ -8,3 +8,6 @@ export const dataNotLoaded = "DATA_NOT_LOADED";
 
 export const operationInProgress = "OPERATION_IN_PROGRESS";
 export const operationNotInProgress = "OPERATION_NOT_IN_PROGRESS";
+
+export const errorOccurred = "ERROR_OCCURRED";
+export const errorNotOccurred = "ERROR_NOT_OCCURRED";
