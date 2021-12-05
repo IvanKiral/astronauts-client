@@ -9,7 +9,7 @@ interface IEditorItemContainerProps{
 
 export const EditorItemContainer: React.FC<IEditorItemContainerProps> = ({id}) => {
     const dispatch = useAppDispatch();
-    const astronaut = useAppSelector(s => s.astronautsState.list.get(id))
+    const astronaut = useAppSelector(s => s.astronautsState.list.astronauts.get(id))
     const isOperationInProgress = useAppSelector(s => s.astronautsState.isOperationInProgress);
 
     console.log(astronaut?.name);

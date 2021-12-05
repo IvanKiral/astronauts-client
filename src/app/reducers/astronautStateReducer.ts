@@ -1,12 +1,11 @@
-import {astronautReducer} from "./astronautReducer";
+import {astronautReducer, IAstronautReducerState} from "./astronautReducer";
 import {isDataLoadedReducer} from "./isDataLoadedReducer";
 import {combineReducers} from "redux";
-import {IAstronautsMap} from "../types/IAstronautsMap.type";
 import {isOperationInProgressReducer} from "./isOperationInProgressReducer";
 
 export interface IAstronautStateReducer{
     isDataLoaded: boolean,
-    list: IAstronautsMap,
+    list: IAstronautReducerState,
     isOperationInProgress: boolean,
 }
 
