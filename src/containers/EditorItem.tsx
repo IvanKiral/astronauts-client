@@ -10,6 +10,7 @@ interface IEditorItemContainerProps{
 export const EditorItemContainer: React.FC<IEditorItemContainerProps> = ({id}) => {
     const dispatch = useAppDispatch();
     const astronaut = useAppSelector(s => s.astronautsState.list.get(id))
+    const isOperationInProgress = useAppSelector(s => s.astronautsState.isOperationInProgress);
 
     console.log(astronaut?.name);
 
@@ -22,6 +23,7 @@ export const EditorItemContainer: React.FC<IEditorItemContainerProps> = ({id}) =
 
     return (
         <EditorItem
+            isOperationInProgress={isOperationInProgress}
             astronaut={astronaut}
             onDelete={onDelete}
             id={id}
