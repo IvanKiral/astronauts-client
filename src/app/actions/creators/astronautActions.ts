@@ -6,9 +6,9 @@ export type AstronautAction = ReturnType<typeof AstronautCreatedAction | typeof 
     | typeof AstronautsReplacedAction>
 
 
-export const AstronautCreatedAction = (astronaut: IAstronaut) => ({
+export const AstronautCreatedAction = (id: string, astronaut: IAstronaut) => ({
     type: astronautCreated,
-    payload: { astronaut }
+    payload: { id, astronaut }
 }) as const;
 
 export const AstronautDeletedAction = (id: string) => ({

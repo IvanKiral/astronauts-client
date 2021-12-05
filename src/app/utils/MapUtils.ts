@@ -1,6 +1,5 @@
 import {IAstronautsMap} from "../types/IAstronautsMap.type";
 import {IAstronaut} from "../types/astronaut.type";
-import {v4 as uuid} from "uuid";
 import {IAstronautDto} from "../repositories/IAstronautRepository";
 
 export const ReplaceAstronauts = (state: IAstronautsMap, astronauts: Array<IAstronautDto>) => astronauts.reduce(
@@ -8,9 +7,9 @@ export const ReplaceAstronauts = (state: IAstronautsMap, astronauts: Array<IAstr
     new Map<string, IAstronaut>()
 );
 
-export const AddAstronaut = (state: IAstronautsMap, astronaut: IAstronaut) => {
+export const AddAstronaut = (state: IAstronautsMap, id: string, astronaut: IAstronaut) => {
     const newMap = new Map(state);
-    newMap.set(uuid(), astronaut);
+    newMap.set(id, astronaut);
 
     return newMap
 }

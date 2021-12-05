@@ -1,10 +1,9 @@
 import React from 'react'
 import Table from 'react-bootstrap/Table'
-import {IAstronautsMap} from "../app/types/IAstronautsMap.type";
 import {EditorItem} from "../containers/EditorItem";
 
 interface EditorProps {
-    astronauts: IAstronautsMap
+    astronauts: Array<string>
 }
 
 export const Editor: React.FC<EditorProps> = ({astronauts}) => {
@@ -20,7 +19,7 @@ export const Editor: React.FC<EditorProps> = ({astronauts}) => {
             </tr>
         </thead>
         <tbody>
-        {Array.from(astronauts.keys()).map((item) => <EditorItem id={item}/>)}
+        {astronauts.map(key => <EditorItem key={key} id={key}/>)}
         </tbody>
     </Table>)
 }
