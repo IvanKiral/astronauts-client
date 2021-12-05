@@ -1,11 +1,10 @@
 import { combineReducers } from 'redux';
-import { astronautReducer } from "./reducers/astronautReducer";
-import {IAstronautsMap} from "./types/IAstronautsMap.type";
+import {astronautStateReducer, IAstronautStateReducer} from "./reducers/astronautStateReducer";
 
 export interface IStore{
-    astronauts: IAstronautsMap;
+    astronauts: IAstronautStateReducer;
 }
 
 export const rootReducer = combineReducers({
-    astronauts: astronautReducer,
+    astronautsState: astronautStateReducer,
 });
