@@ -1,8 +1,7 @@
 import {EditorItem} from "../components/EditorItem";
 import {useAppDispatch, useAppSelector} from "../app/hooks";
 import React, {useEffect} from "react";
-import {AstronautDeletedAction} from "../app/actions/creators/astronautActions";
-import {loadAstronautsAction} from "../app/actions/thunkActions";
+import {deleteAstronautAction, loadAstronautsAction} from "../app/actions/thunkActions";
 
 interface IEditorItemContainerProps{
     readonly id: string;
@@ -17,7 +16,7 @@ export const EditorItemContainer: React.FC<IEditorItemContainerProps> = ({id}) =
     }, [dispatch]);
 
     const onDelete = () => {
-        dispatch(AstronautDeletedAction(id))
+        dispatch(deleteAstronautAction(id))
     }
 
     if (astronaut === undefined)
