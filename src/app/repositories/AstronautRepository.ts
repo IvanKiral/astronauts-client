@@ -1,7 +1,7 @@
 import {IAstronautDto, IAstronautRepository} from "./IAstronautRepository";
 import {IAstronaut} from "../types/astronaut.type";
 
-const api_url = 'https://localhost:7251/api/astronaut/';
+const api_url = 'https://astronauts-backend.azurewebsites.net/api/astronaut/';
 
 export const AstronautRepository: IAstronautRepository = {
 
