@@ -1,7 +1,7 @@
 import {IAstronautsMap} from "../types/IAstronautsMap.type";
 import {Action} from "../actions/Action";
-import {astronautCreated, astronautDeleted, astronautUpdated} from "../actions/actionTypes";
-import {AddAstronaut, DeleteAstronaut, UpdateAstronaut} from "../utils/MapUtils";
+import {astronautCreated, astronautDeleted, astronautsReplaced, astronautUpdated} from "../actions/actionTypes";
+import {AddAstronaut, DeleteAstronaut, ReplaceAstronauts, UpdateAstronaut} from "../utils/MapUtils";
 
 
 const initialState: IAstronautsMap = new Map([
@@ -18,6 +18,9 @@ export const astronautReducer = (state: IAstronautsMap = initialState, action: A
 
         case astronautDeleted:
             return DeleteAstronaut(state, action.payload.id);
+
+        case astronautsReplaced:
+            return ReplaceAstronauts(state, action.payload.astronauts);
 
         default:
             return state;

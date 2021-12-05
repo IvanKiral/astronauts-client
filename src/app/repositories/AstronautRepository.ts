@@ -1,7 +1,7 @@
 import {IAstronautDto, IAstronautRepository} from "./IAstronautRepository";
 import {IAstronaut} from "../types/astronaut.type";
 
-const api_url = 'https://localhost:5000/api/astronaut/';
+const api_url = 'https://localhost:7251/api/astronaut/';
 
 export const AstronautRepository: IAstronautRepository = {
 
@@ -9,8 +9,7 @@ export const AstronautRepository: IAstronautRepository = {
         const response = await fetch(api_url);
         const data = await response.text();
         const parsedData = JSON.parse(data);
-
-        return parsedData.astronauts;
+        return parsedData.astroanuts;
     },
 
     async addAstronaut(astronaut: IAstronaut): Promise<IAstronautDto> {
