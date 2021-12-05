@@ -1,5 +1,5 @@
 import React from "react";
-import {useAppDispatch} from "../app/hooks";
+import {useAppDispatch, useAppSelector} from "../app/hooks";
 import {AddAstronaut} from "../components/AddAstronaut";
 import {IAstronaut} from "../app/types/astronaut.type";
 import {addAstronautAction, updateAstronautAction} from "../app/actions/thunkActions";
@@ -13,6 +13,7 @@ interface IAddAstronautProps{
 
 export const AddAstronautContainer: React.FC<IAddAstronautProps> = ({buttonName, id, astronaut}) => {
     const dispatch = useAppDispatch();
+    const isOperationInProgress = useAppSelector(s => s.astronautsState.isOperationInProgress);
 
     const handleCreate = (name: string, surname: string, date: string, ability: string): void => {
         if(id === undefined) {
@@ -22,10 +23,13 @@ export const AddAstronautContainer: React.FC<IAddAstronautProps> = ({buttonName,
         }
     }
 
+    console.log(isOperationInProgress)
+
     return (<AddAstronaut
         buttonName={buttonName}
         astronaut={astronaut}
         handleCreate={handleCreate}
+        isOperationInProgress={isOperationInProgress}
     />)
 }
 

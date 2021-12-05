@@ -5,3 +5,6 @@ export const astronautsReplaced = 'ASTRONAUTS_REPLACED';
 
 export const dataLoaded = "DATA_LOADED";
 export const dataNotLoaded = "DATA_NOT_LOADED";
+
+export const operationInProgress = "OPERATION_IN_PROGRESS";
+export const operationNotInProgress = "OPERATION_NOT_IN_PROGRESS";

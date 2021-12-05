@@ -3,12 +3,13 @@ import {Button, Form, FormControl, InputGroup, Modal} from "react-bootstrap";
 import {IAstronaut} from "../app/types/astronaut.type";
 
 interface IAddAstronautProps{
-    readonly buttonName?: string
-    readonly astronaut?: IAstronaut
-    readonly handleCreate: (name: string, surname: string, date: string, ability: string) => void
+    readonly buttonName?: string;
+    readonly astronaut?: IAstronaut;
+    readonly handleCreate: (name: string, surname: string, date: string, ability: string) => void;
+    readonly isOperationInProgress: boolean;
 }
 
-export const AddAstronaut: React.FC<IAddAstronautProps> = ({buttonName, astronaut, handleCreate}) => {
+export const AddAstronaut: React.FC<IAddAstronautProps> = ({buttonName, astronaut, handleCreate, isOperationInProgress}) => {
     const [show, setShow] = useState(false);
     const [name, setName] = useState(astronaut?.name ?? "");
     const [surname, setSurname] = useState(astronaut?.surname ??"");
@@ -33,7 +34,11 @@ export const AddAstronaut: React.FC<IAddAstronautProps> = ({buttonName, astronau
     }
 
     return (<>
-        <Button variant="primary" onClick={handleShow}>{buttonName ?? "Add astronaut"}</Button>
+        <Button
+            disabled={isOperationInProgress}
+            variant="primary"
+            onClick={handleShow}>{buttonName ?? "Add astronaut"}
+        </Button>
 
         <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
