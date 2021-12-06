@@ -33,6 +33,8 @@ export const AddAstronaut: React.FC<IAddAstronautProps> = ({buttonName, astronau
         event.preventDefault()
     }
 
+    const title = buttonName ? "Edit astronaut" : "Add astronaut";
+
     return (<>
         <Button
             disabled={isOperationInProgress}
@@ -42,7 +44,7 @@ export const AddAstronaut: React.FC<IAddAstronautProps> = ({buttonName, astronau
 
         <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
-                <Modal.Title>Add astronaut</Modal.Title>
+                <Modal.Title>{title}</Modal.Title>
             </Modal.Header>
 
             <Form onSubmit={handleSubmit}>

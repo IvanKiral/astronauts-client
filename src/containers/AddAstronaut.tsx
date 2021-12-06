@@ -23,8 +23,6 @@ export const AddAstronautContainer: React.FC<IAddAstronautProps> = ({buttonName,
         }
     }
 
-    console.log(isOperationInProgress)
-
     return (<AddAstronaut
         buttonName={buttonName}
         astronaut={astronaut}

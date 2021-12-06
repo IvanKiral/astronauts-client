@@ -17,7 +17,7 @@ export const Editor: React.FC<EditorProps> = ({astronauts, error, orderBy}) => {
     } = error;
 
     return (<>
-        <Table striped bordered hover>
+        <Table striped bordered hover style={{marginTop: "16px"}}>
             <thead>
             <tr>
                 <th style={{width: "22%"}} onClick={() => orderBy(orderByMap.name)}>Name</th>
